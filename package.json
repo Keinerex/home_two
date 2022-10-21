@@ -1,7 +1,7 @@
 {
     "name": "unit-demo-cra",
     "version": "0.1.0",
-    "homepage": ".",
+    "homepage": "http://Keinerex.github.io/home_two",
     "private": true,
     "dependencies": {
         "babel-plugin-lodash": "^3.3.4",
@@ -22,6 +22,7 @@
         "stylelint": "^14.14.0"
     },
     "scripts": {
+        "deploy": "gh-pages -d dist",
         "start": "npx webpack serve --mode=development",
         "build": "webpack --mode=production",
         "analyze": "npm run validate && statoscope generate stats.json --output report.html",
@@ -39,6 +40,7 @@
         "babel-loader": "^8.2.5",
         "babel-preset-es2015": "^6.24.1",
         "eslint-config-airbnb-base": "^15.0.0",
+        "gh-pages": "^4.0.0",
         "html-webpack-plugin": "^5.5.0",
         "stylelint-config-standard": "^29.0.0",
         "uuid": "^9.0.0",
@@ -60,9 +62,7 @@
             "ecmaVersion": "latest",
             "sourceType": "module"
         },
-        "plugins": [
-
-        ],
+        "plugins": [],
         "rules": {
             "react/react-in-jsx-scope": "off"
         }
