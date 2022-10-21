@@ -26,14 +26,14 @@ const config = {
         new HtmlWebpackPlugin({
             template: "public/index.html"
         }),
+        new LodashModuleReplacementPlugin({
+            'collections': true,
+            'paths': true
+        }),
         new StatoscopePlugin({
             saveStatsTo: 'stats.json',
             saveOnlyStats: false,
             open: false,
-        }),
-        new LodashModuleReplacementPlugin({
-            'collections': true,
-            'paths': true
         }),
     ],
     output: {
@@ -66,6 +66,7 @@ const config = {
         minimize: true,
         moduleIds: "deterministic",
         innerGraph: true,
+        providedExports: true,
         splitChunks: {
             minSize: 20000,
             minRemainingSize: 0,
@@ -94,19 +95,24 @@ const config = {
     },
     target: "web",
     resolve: {
+        alias: {
+            'crypto-browserify': path.resolve(__dirname, 'src/crypto-fall.js')
+        },
         fallback: {
             'buffer': require.resolve('buffer'),
             'stream': false,
-            'crypto': require.resolve('crypto')
+            'crypto': require.resolve('crypto'),
         },
         modules: [
             path.resolve(__dirname, 'node_modules'),
             path.resolve(__dirname, 'node_modules/ui/node_modules'),
         ],
+
     },
     stats: {
         children: true
     },
+
 
     // @TODO optimizations: done
     // @TODO lodash treeshaking: done
