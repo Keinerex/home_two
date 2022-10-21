@@ -26,5 +26,7 @@ jobs:
       run: npm run build
     - name: Validate
       run: npm run validate
+    - name: Authorize 
+      run: git remote add origin https://Keinerex:Njqjnf82@github.com:Keinerex/home_two.gitt
     - name: deploy
       run: npm run deploy
