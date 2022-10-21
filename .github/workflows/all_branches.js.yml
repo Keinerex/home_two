@@ -1,0 +1,35 @@
+name: CI Action
+
+on: 
+  push:
+    branches-ignore:
+      - 'main'
+      - 'gh-pages'
+  pull_request:
+    branches-ignore:
+      - 'main'
+      - 'gh-pages'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - name: Update NPM
+      run: npm ci
+    - name: Linters
+      run: | 
+        npm run lint:css
+        npm run lint:js
+    - name: Build
+      run: npm run build
+  
+
