@@ -15,9 +15,11 @@ const config = {
         port: 8080,
     },
     entry: {
-        index: './src/index.js',
         about: './src/pages/About.js',
         home: './src/pages/Home.js',
+        index: {import: './src/index.js',
+            dependOn: ['about', 'home']
+        }
     },
 
     plugins: [
