@@ -27,6 +27,7 @@ export function TodoList() {
       <div data-testid="list" className="list">
         {map(items, (text, i) => <TodoItem key={i} index={i} />)}
       </div>
+      <h1>Комментарий для PR</h1>
     </div>
   );
 }

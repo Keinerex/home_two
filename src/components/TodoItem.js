@@ -7,8 +7,7 @@ import styles from './index.module.css';
 
 export function TodoItem(props) {
   // eslint-disable-next-line react/prop-types
-  const { index } = props;
-
+  const {index} = props;
   const dispatch = useDispatch();
   const text = useSelector((state) => state.items[index]);
   const done = useSelector((state) => state.done[index]);
